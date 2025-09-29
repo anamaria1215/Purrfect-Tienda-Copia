@@ -10,6 +10,6 @@ import { LoggerGlobal } from './loggerGlobal';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerGlobal).forRoutes('*'); // Se aplica a todas las rutas
+    consumer.apply(LoggerGlobal).forRoutes('*');
   }
 }
