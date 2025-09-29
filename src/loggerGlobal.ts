@@ -10,7 +10,6 @@ export class LoggerGlobal implements NestMiddleware {
     const { method, originalUrl } = req;
     const start = Date.now();
 
-    // Cuando la respuesta termine, registramos status y tiempo.
     res.on('finish', () => {
       const { statusCode } = res;
       const duration = Date.now() - start;
@@ -20,4 +19,3 @@ export class LoggerGlobal implements NestMiddleware {
     next();
   }
 }
-Qué hace: usa el logger de Nest (Logger) y registra mét
