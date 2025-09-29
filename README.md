@@ -115,7 +115,5 @@ Ofrece alimentos, juguetes, accesorios y más, con un manejo de inventario en ti
 
 ## Notas
 - Se usaron los métodos **HTTP** (GET, POST, PUT, DELETE) para definir las rutas de usuario y administrador.  
-- Este documento resume la lógica de negocio y servirá como base para el desarrollo del backend con **NestJS**.  
-
 ---
 
