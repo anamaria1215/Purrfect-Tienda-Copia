@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response } from 'express';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { loggerGlobal } from './middleware/loggerGlobal';
 
-export function loggerGlobal(req: Request, res: Response, next: NextFunction) {
-  const date = new Date();
-  const fecha = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-  console.log(
-    `Estas ejecutando el método ${req.method}, en la ruta ${req.url}, el día ${fecha} a las ${time}`,
-  );
-  next();
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.use(loggerGlobal);
+  await app.listen(3002);
+  console.log('Servidor corriendo en el puerto 3002 🐱');
 }
+bootstrap();
