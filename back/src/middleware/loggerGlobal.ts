@@ -1,20 +1,11 @@
-import { Injectable, NestMiddleware, Logger } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
-@Injectable()
-export class LoggerGlobal implements NestMiddleware {
-  private readonly logger = new Logger('HTTP');
-
-  use(req: Request, res: Response, next: NextFunction): void {
-    const { method, originalUrl } = req;
-    const start = Date.now();
-
-    res.on('finish', () => {
-      const { statusCode } = res;
-      const duration = Date.now() - start;
-      this.logger.log(`${method} ${originalUrl} ${statusCode} - ${duration}ms`);
-    });
-
-    next();
-  }
+export function loggerGlobal(req: Request, res: Response, next: NextFunction) {
+  const date = new Date();
+  const fecha = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  console.log(
+    `Estas ejecutando el método ${req.method}, en la ruta ${req.url}, el día ${fecha} a las ${time}`,
+  );
+  next();
 }
