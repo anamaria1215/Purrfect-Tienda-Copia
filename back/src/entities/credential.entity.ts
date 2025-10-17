@@ -1,4 +1,4 @@
-import { Roles } from 'src/enum/roles.enum';
+import { Roles } from '../enum/roles.enum'; // ruta corregida
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './users.entity';
 
@@ -29,6 +29,6 @@ export class Credential {
   })
   roles: Roles;
 
-  @OneToOne(() => User, (user) => user.credential_id)
-  user_id: User;
+  @OneToOne(() => User, (user) => user.credential)
+  user: User;
 }
