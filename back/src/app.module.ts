@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-<<<<<<< HEAD
 
-// Módulos de tus entidades
-
-=======
+// Módulos de configuración y TypeORM
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import typeorm from './config/typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+// Entidades
 import { User } from './entities/users.entity';
 import { Credential } from './entities/credential.entity';
 import { Product } from './entities/product.entity';
@@ -19,7 +18,6 @@ import { Cart } from './entities/carrito.entity';
 import { CartProduct } from './entities/carrito_producto.entity';
 import { Payment } from './entities/pago.entity';
 import { OrderProduct } from './entities/pedido_producto.entity';
->>>>>>> fb635f87c4c86b034174f4085691feb1de02677b
 
 @Module({
   imports: [
