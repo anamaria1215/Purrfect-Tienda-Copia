@@ -14,10 +14,10 @@ import { Product } from './entities/product.entity';
 import { Category } from './entities/categories.entity';
 import { Order } from './entities/orders.entity';
 import { OrderDetail } from './entities/orders_detail.entity';
-import { Cart } from './entities/carrito.entity';
-import { CartProduct } from './entities/carrito_producto.entity';
-import { Payment } from './entities/pago.entity';
-import { OrderProduct } from './entities/pedido_producto.entity';
+import { Carrito } from './entities/carrito.entity';
+import { CarritoProducto } from './entities/carrito_producto.entity';
+import { Pago } from './entities/pago.entity';
+import { PedidoProducto } from './entities/pedido_producto.entity';
 
 @Module({
   imports: [
