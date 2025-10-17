@@ -1,17 +1,20 @@
-import { DataSource } from 'typeorm';
-import { ConfigService } from '@nestjs/config';
+import { DataSourceOptions } from 'typeorm';
+import { config as dotenvConfig } from 'dotenv';
+import { join } from 'path';
 
-// NOTA: Este archivo ya no hace lectura directa de .env
-// Se recomienda usar TypeOrmModule.forRootAsync en AppModule
-export const AppDataSource = new DataSource({
+dotenvConfig({ path: '.env' }); // Asegúrate que apunta al .env correcto
+
+const ormConfig: DataSourceOptions = {
   type: 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 5432,
-  username: process.env.DB_USERNAME || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
-  database: process.env.DB_NAME || 'purrfect_db',
-  entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/migrations/*{.ts,.js}'],
-  synchronize: false,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD, // Aquí será leído como string
+  database: process.env.DB_NAME,
+  synchronize: true, // Solo en dev
   logging: true,
-});
+  entities: [join(__dirname, '..', '**', '*.entity.{ts,js}')],
+  migrations: [join(__dirname, '..', 'migrations', '*.{ts,js}')],
+};
+
+export default ormConfig;
