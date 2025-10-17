@@ -13,7 +13,6 @@ import { Credential } from './entities/credential.entity';
 import { Product } from './entities/product.entity';
 import { Category } from './entities/categories.entity';
 import { Order } from './entities/orders.entity';
-import { OrderDetail } from './entities/orders_detail.entity';
 import { Carrito } from './entities/carrito.entity';
 import { CarritoProducto } from './entities/carrito_producto.entity';
 import { Pago } from './entities/pago.entity';
@@ -35,11 +34,10 @@ import { PedidoProducto } from './entities/pedido_producto.entity';
       Product,
       Category,
       Order,
-      OrderDetail,
-      Cart,
-      CartProduct,
-      Payment,
-      OrderProduct,
+      Carrito,
+      CarritoProducto,
+      Pago,
+      PedidoProducto,
     ]),
   ],
   controllers: [AppController],
